@@ -4,7 +4,8 @@ import 'package:evently_app/core/Widget/Custom_Text_Button.dart' show CustomText
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:evently_app/config/resourse/isvalidat.dart';
-import 'package:evently_app/fetures/register/register.dart';
+import 'package:evently_app/fetures/auth/login/login.dart';
+import 'package:evently_app/fetures/auth/register/register.dart';
 import 'package:evently_app/core/Widget/Custom_Elvated button.dart';
 import 'package:evently_app/core/Routesmanger/routesmanger.dart';
 import 'package:evently_app/core/Widget/Custom_text_form.dart';

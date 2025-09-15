@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:evently_app/core/Colorsmanger/Colorsmanger.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:evently_app/fetures/register/register.dart';
+import 'package:evently_app/fetures/main_layout/main_layout.dart';
+import 'package:evently_app/fetures/auth/login/login.dart';
+import 'package:evently_app/fetures/auth/register/register.dart';
 // its like routes manger and colors manager its storge or blueprint for all pages
 class Thememanger{
   static final ThemeData light=ThemeData(
+    useMaterial3: false,
     appBarTheme: AppBarTheme(
       backgroundColor: Colorsmanger.Whiteblue,
       foregroundColor: Colorsmanger.Blue,

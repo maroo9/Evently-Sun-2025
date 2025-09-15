@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
         themeMode: ThemeMode.light,
         locale: Locale("en"),
       routes: Routesmanger.routes,
-      initialRoute: Routesmanger.Registes,
+      initialRoute: Routesmanger.mainlayout,
       
       ),
     );

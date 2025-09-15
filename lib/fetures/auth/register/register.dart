@@ -7,6 +7,8 @@ import 'package:evently_app/config/language/theme/theme.dart';
 import 'package:evently_app/core/Widget/Custom_text_form.dart';
 import 'package:evently_app/core/Routesmanger/routesmanger.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:evently_app/fetures/auth/login/login.dart';
+import 'package:evently_app/fetures/auth/register/register.dart';
 import 'package:evently_app/config/resourse/isvalidat.dart';
 class Register extends StatefulWidget {
   const Register({super.key});
