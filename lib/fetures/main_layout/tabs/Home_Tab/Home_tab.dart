@@ -26,8 +26,9 @@ class HomeTab extends StatelessWidget {
           child: Row(
             children: [
               Text("Welcome Back ✨",style: GoogleFonts.inter(fontWeight: FontWeight.w400,fontSize: 14),)
-
+            //IconButton(onPressed: (){}, icon: Icon(Imagemanger.GoogleIcon),)
             ],
+
 
 
         )
