@@ -2,6 +2,11 @@ import 'package:flutter/material.dart';
 abstract class Imagemanger{
   static const String logoimage="assets/images/img.png";
   static const String GoogleIcon="assets/images/google_icon.png";
+  static const String Meetingphoto="assets/images/img_5.png";
+  static const String Eatingpoto="assets/images/img_6.png";
+  static const String Bookphoto="assets/images/img_7.png";
+  static const String Gamingphoto="assets/images/img_8.png";
+  static const String Sportphoto="assets/images/img_9.png";
 
 
 }

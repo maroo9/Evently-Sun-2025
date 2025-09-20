@@ -34,7 +34,11 @@ class Thememanger{
         showUnselectedLabels: true,
     ),//  he used it in   main layout as: like made static function that  can use in all files   _buildBottomNavigationBar
     textTheme: TextTheme(
-      bodySmall: GoogleFonts.inter(fontSize: 16,fontWeight: FontWeight.w400,color: Colorsmanger.Blue)
+      bodySmall: GoogleFonts.inter(fontSize: 16,fontWeight: FontWeight.w400,color: Colorsmanger.Blue),
+          headlineSmall: GoogleFonts.inter(fontSize: 14,fontWeight: FontWeight.w400,color: Colorsmanger.Whiteblue),
+      headlineLarge:  GoogleFonts.inter(fontWeight: FontWeight.w700,fontSize: 24,color: Colorsmanger.Whiteblue),
+      titleSmall: GoogleFonts.inter(fontWeight: FontWeight.bold,fontSize: 20,color: Colors.black),
+
     ),
   );
   static final ThemeData dark=ThemeData();
