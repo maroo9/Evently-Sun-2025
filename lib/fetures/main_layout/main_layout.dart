@@ -25,8 +25,8 @@ class _MainLayoutState extends State<MainLayout> {
 
   List<Widget>tab=[
     HomeTab(),
-    PersonTab(),
     LocationTab(),
+    FavoriteTab(),
     PersonTab(),
 
   ];
