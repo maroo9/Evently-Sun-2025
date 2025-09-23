@@ -38,8 +38,11 @@ class Thememanger{
           headlineSmall: GoogleFonts.inter(fontSize: 14,fontWeight: FontWeight.w400,color: Colorsmanger.Whiteblue),
       headlineLarge:  GoogleFonts.inter(fontWeight: FontWeight.w700,fontSize: 24,color: Colorsmanger.Whiteblue),
       titleSmall: GoogleFonts.inter(fontWeight: FontWeight.bold,fontSize: 20,color: Colors.black),
+      labelMedium: GoogleFonts.inter(fontSize: 20,color: Colors.black,fontWeight: FontWeight.bold,),
+      labelSmall: GoogleFonts.inter(fontSize: 16,color: Colors.black,fontWeight: FontWeight.bold,),
 
     ),
-  );
+
+    );
   static final ThemeData dark=ThemeData();
 }

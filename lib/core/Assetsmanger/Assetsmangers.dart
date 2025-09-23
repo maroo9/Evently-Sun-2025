@@ -7,6 +7,7 @@ abstract class Imagemanger{
   static const String Bookphoto="assets/images/img_7.png";
   static const String Gamingphoto="assets/images/img_8.png";
   static const String Sportphoto="assets/images/img_9.png";
+  static const String Routelogo="assets/images/img_10.png";
 
 
 }
