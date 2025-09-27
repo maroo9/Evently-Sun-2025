@@ -4,7 +4,7 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:evently_app/core/Colorsmanger/Colorsmanger.dart';
 class CustomTextForm extends StatelessWidget {
   //  write all the variables  in constartor to be  use it
-  CustomTextForm({super.key, required this.labelText,
+  CustomTextForm({super.key,  this.labelText,
     this.hintText,
     required this.controller,
      this.prefixIcon,
@@ -12,6 +12,7 @@ class CustomTextForm extends StatelessWidget {
     this.isObscure = false,
     this.keyboardType = TextInputType.text,
     required this.validator,
+    this.Lines=1,
     });
   // makes the variable
   final String? labelText;   // as String "Name"
@@ -26,11 +27,12 @@ class CustomTextForm extends StatelessWidget {
  // final bool isSecure;
   //final String? Function(String?) validator;
   //final TextEditingController controller;
-  //final int maxLines;
+  final int Lines;
 
   @override
   Widget build(BuildContext context) {
     return   TextFormField(
+      maxLines: Lines,
       controller:controller ,
       validator: validator,
       obscureText: isObscure,

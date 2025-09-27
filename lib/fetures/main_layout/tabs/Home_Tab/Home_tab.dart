@@ -92,7 +92,7 @@ class _HomeTabState extends State<HomeTab> {
         
         
               ),
-CustomTabBar(bgselecteditem: Colorsmanger.Whiteblue, unfgselecteditem: Colorsmanger.Blue,  unbgselecteditem: Colors.transparent, fgselecteditem: Colorsmanger.Whiteblue,),
+CustomTabBar(bgselecteditem: Colorsmanger.Whiteblue, fgselecteditem: Colorsmanger.Blue, unbgselecteditem: Colors.transparent,unfgselecteditem: Colorsmanger.Whiteblue,),
           ],
               ),
               ),

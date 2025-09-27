@@ -10,22 +10,21 @@ class Thememanger{
   static final ThemeData light=ThemeData(
     useMaterial3: false,
     appBarTheme: AppBarTheme(
-      backgroundColor: Colorsmanger.Whiteblue,
+      backgroundColor: Colorsmanger.darkblue,
       foregroundColor: Colorsmanger.Blue,
       centerTitle: true,
       titleTextStyle:GoogleFonts.roboto(fontWeight: FontWeight.w400,fontSize: 20,color: Colorsmanger.Blue)
 
     ),
     floatingActionButtonTheme: FloatingActionButtonThemeData(
-      backgroundColor: Colorsmanger.Blue,
-      foregroundColor: Colorsmanger.Whiteblue,
+      backgroundColor: Colorsmanger.darkblue,
+      foregroundColor: Colorsmanger.offwhite,
       shape: StadiumBorder(
         side: BorderSide(color: Colorsmanger.Whiteblue,width: 4),
       )
 
     ),   //he used it in   main layout  its default   implement when you edit in there theme:
     bottomNavigationBarTheme: BottomNavigationBarThemeData(
-
 
         backgroundColor: Colors.transparent,
         type: BottomNavigationBarType.fixed,

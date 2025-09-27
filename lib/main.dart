@@ -20,7 +20,7 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: Thememanger.light,
         darkTheme: Thememanger.dark,
-        themeMode: ThemeMode.light,
+        themeMode: ThemeMode.dark,
         locale: Locale("en"),
       routes: Routesmanger.routes,
       initialRoute: Routesmanger.mainlayout,

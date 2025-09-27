@@ -30,10 +30,11 @@ class _CustomTabBarState extends State<CustomTabBar> {
         indicatorColor: Colors.transparent,
         isScrollable: true,
         tabs:CatogryModel.Catogries.map((catogry) => Tabitem(
-            bgselecteditem: Colors.white,
-            unfgselecteditem:Colorsmanger.Whiteblue,
-            fgselecteditem:Colorsmanger.Blue,
-            unbgselecteditem: Colors.transparent,
+            bgselecteditem: widget.bgselecteditem,
+            unbgselecteditem: widget.unbgselecteditem,
+            fgselecteditem: widget.fgselecteditem,
+            unfgselecteditem:widget.unfgselecteditem,
+
             catogryModel: catogry,
             isSelected:selectedIndex==
                 CatogryModel.Catogries.indexOf(catogry)),).toList(),
