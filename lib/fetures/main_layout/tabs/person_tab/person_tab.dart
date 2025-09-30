@@ -1,15 +1,25 @@
 import 'package:evently_app/core/Colorsmanger/Colorsmanger.dart';
 import 'package:evently_app/core/Widget/Custom_Elvated%20button.dart';
 import 'package:flutter/material.dart';
+import 'package:evently_app/provider/config_provider.dart';
 import 'package:evently_app/fetures/main_layout/tabs/person_tab/DropDown.dart';
 import 'package:evently_app/core/Assetsmanger/Assetsmangers.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:evently_app/l10n/app_localizations.dart';
+import 'package:evently_app/l10n/app_localizations_ar.dart';
+import 'package:evently_app/l10n/app_localizations_en.dart';
+import 'package:provider/provider.dart';
+import 'package:evently_app/provider/config_provider.dart';
+import '../../../../provider/config_provider.dart';
 class PersonTab extends StatelessWidget {
   const PersonTab({super.key});
 
   @override
   Widget build(BuildContext context) {
+    AppLocalizations? appLocalizations = AppLocalizations.of(context);
+    var themeProvider = Provider.of<ConfigProvider>(context);
+    var languageProvider = Provider.of<ConfigProvider>(context);
     return SafeArea(
         child:SingleChildScrollView(
             child:   Column(
@@ -27,7 +37,8 @@ class PersonTab extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
                       Image.asset(Imagemanger.Routelogo,height: 124,width: 124,),
-                    Column(
+                    SizedBox(width: 16,),
+                      Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text("Marwan Hazem",style: GoogleFonts.inter(fontWeight: FontWeight.w700,fontSize: 20,color: Colorsmanger.Whiteblue),),
@@ -40,16 +51,24 @@ class PersonTab extends StatelessWidget {
                     ],
 
                   ),
-                  
+
 
             ),
                   SizedBox(height: 24,),
-                  DropdownItem(label: "Theme", selecteditems: "light", menueitems: ["light","dark","system"]
-
+                  DropdownItem(
+                    onChanged: (newtheme){
+                      themeProvider.changeTheme(newtheme=="light"?ThemeMode.light:newtheme=="dark"?ThemeMode.dark:ThemeMode.system);
+                    },
+                      label: appLocalizations!.theme, selecteditems: appLocalizations.light, menueitems: ["dark","Light"]
 
                   ),
                   SizedBox(height: 16,),
-                  DropdownItem(label: "Laungage", selecteditems: "En", menueitems: ["English","Arabic"]
+                  DropdownItem(
+                    onChanged: (newlanguage){
+                      languageProvider.changeLanguage(newlanguage == "English"? "en":"ar");
+                    },
+                      label: appLocalizations.language, selecteditems: "En", menueitems: ["English","Arabic"]
+
                   ),
                   SizedBox(height: 140,),
                   ElevatedButton(
@@ -73,3 +92,4 @@ class PersonTab extends StatelessWidget {
     );
   }
 }
+

@@ -3,10 +3,13 @@ import 'package:evently_app/core/Colorsmanger/Colorsmanger.dart';
 import 'package:evently_app/core/Routesmanger/routesmanger.dart';
 import 'package:evently_app/core/Widget/Custom_Text_Button.dart';
 import 'package:evently_app/core/Widget/Custom_text_form.dart';
+import 'package:evently_app/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:evently_app/core/Widget/Custom_Elvated button.dart';
 import 'package:evently_app/core/Widget/Custom_tab_bar.dart';
 import 'package:google_fonts/google_fonts.dart';
+import '../../../l10n/app_localizations.dart';
+
 class CreataEvent extends StatefulWidget {
   const CreataEvent({super.key});
 
@@ -38,7 +41,7 @@ class _CreataEventState extends State<CreataEvent> {
     return Scaffold(
         backgroundColor: Colorsmanger.Whiteblue,
         appBar: AppBar(
-          title: Text("Create Event"),
+          title: Text(AppLocalizations.of(context)!.create_event),
           centerTitle: true,
         ),
         body: Column(
@@ -50,17 +53,17 @@ class _CreataEventState extends State<CreataEvent> {
               unbgselecteditem: Colors.transparent,
               unfgselecteditem: Colorsmanger.Blue,),
             SizedBox(height: 16,),
-            Text("Title", style: Theme
+            Text(AppLocalizations.of(context)!.title, style: Theme
                 .of(context)
                 .textTheme
                 .titleSmall),
-            CustomTextForm(labelText: "Event Title",
+            CustomTextForm(labelText: AppLocalizations.of(context)!.event_title,
                 hintText: "Enter Event Title",
                 prefixIcon: Icons.edit_note_outlined,
                 controller: _textcontroller,
                 validator: (input) {}),
             SizedBox(height: 16,),
-            Text("Description", style: Theme
+            Text(AppLocalizations.of(context)!.description, style: Theme
                 .of(context)
                 .textTheme
                 .titleSmall),
@@ -73,7 +76,7 @@ class _CreataEventState extends State<CreataEvent> {
             Row(
               children: [
                 Icon(Icons.calendar_month,),
-                Text("Event Date", style: Theme
+                Text(AppLocalizations.of(context)!.event_date, style: Theme
                     .of(context)
                     .textTheme
                     .labelSmall,),
@@ -88,7 +91,7 @@ class _CreataEventState extends State<CreataEvent> {
             Row(
               children: [
                 Icon(Icons.timelapse_outlined,),
-                Text("Event Time", style: Theme
+                Text(AppLocalizations.of(context)!.choose_time, style: Theme
                     .of(context)
                     .textTheme
                     .labelSmall,),
@@ -98,7 +101,7 @@ class _CreataEventState extends State<CreataEvent> {
 
               ],
             ),
-            Text("Location", style: Theme
+            Text(AppLocalizations.of(context)!.location, style: Theme
                 .of(context)
                 .textTheme
                 .labelMedium,),

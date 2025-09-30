@@ -43,13 +43,13 @@ class _HomeTabState extends State<HomeTab> {
                   borderRadius: BorderRadius.vertical(bottom: Radius.circular(20.r))
                , color: Colorsmanger.Blue,
                 ),
-        
+
                 child:SafeArea(
                   child:
                 Column(
-        
+
                    children: [
-        
+
                   Row(
                     children:[
                       Column(
@@ -60,26 +60,26 @@ class _HomeTabState extends State<HomeTab> {
                     SizedBox(height: 5,),
                     Text("Marwan Hazem" ,style:Theme.of(context).textTheme.headlineLarge,),
                     Padding(padding: EdgeInsets.all(8),
-        
+
                    child: Row(
                      mainAxisAlignment: MainAxisAlignment.start,
-        
+
                       children: [
                         Icon(Icons.location_on,color: Colorsmanger.Whiteblue,),
                     SizedBox(width: 4,),
                         Text(" CAIRO ,Egypt ✨",style: GoogleFonts.inter(fontWeight: FontWeight.w400,fontSize: 14,color: Colorsmanger.Whiteblue),),
                   ],
-          
-          
+
+
                     ),
                     ),
                 ],
               ),
-                      SizedBox(width: 100,),
+Spacer(),
                       IconButton(onPressed: (){}, icon: Icon(Icons.sunny,color: Colorsmanger.Whiteblue,),),
                      SizedBox(width: 5,),
-        
-        
+
+
                      InkWell(
                        onTap: (){},
                        child: Card(
@@ -89,21 +89,28 @@ class _HomeTabState extends State<HomeTab> {
                                    ),
                      ),
                   ],
-        
-        
+
+
               ),
-CustomTabBar(bgselecteditem: Colorsmanger.Whiteblue, fgselecteditem: Colorsmanger.Blue, unbgselecteditem: Colors.transparent,unfgselecteditem: Colorsmanger.Whiteblue,),
+
+CustomTabBar(
+  bgselecteditem: Colorsmanger.Whiteblue,
+  fgselecteditem: Colorsmanger.Blue,
+  unbgselecteditem: Colors.transparent,
+  unfgselecteditem: Colorsmanger.Whiteblue,
+),
           ],
               ),
               ),
               ),
-               ListView.separated(
+           ListView.separated(
                   itemBuilder: (context,index)=>EventItem(event: EventModel(catogryModel: CatogryModel.Catogries[0], title: "Meeting for Updating The Development Method ", description: "Meeting for Updating The Development Method ", dataTime: DateTime.now(), timeOfDay: TimeOfDay.now(), imagepath: "")),
                   separatorBuilder: (context,index)=>SizedBox(height: 16,),
                   itemCount: 20,
                  shrinkWrap: true, // Use shrinkWrap to prevent ListView from taking infinite space
                  physics: NeverScrollableScrollPhysics(),
                ),
+
             ],
 
         ),

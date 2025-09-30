@@ -8,6 +8,12 @@ abstract class Imagemanger{
   static const String Gamingphoto="assets/images/img_8.png";
   static const String Sportphoto="assets/images/img_9.png";
   static const String Routelogo="assets/images/img_10.png";
+  static const String Routephoto="assets/images/img_11.png";
+  static const String floweimage="assets/images/img_12.png";
+  static const String Textimage="assets/images/img_13.png";
+  static const String Bigimages="assets/images/img_14.png";
+  static const String Egyptflags="assets/images/img_15.png";
+  static const String Espaniatflag="assets/images/img_16.png";
 
 
 }

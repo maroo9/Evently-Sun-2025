@@ -13,6 +13,8 @@ import 'package:evently_app/core/Assetsmanger/Assetsmangers.dart';
 import 'package:evently_app/core/Colorsmanger/Colorsmanger.dart';
 import 'package:evently_app/core/Routesmanger/routesmanger.dart';
 import 'package:flutter/material.dart';
+
+import '../../../l10n/app_localizations.dart';
 class Login extends StatefulWidget {
 
   const Login({super.key});
@@ -63,7 +65,7 @@ class _LoginState extends State<Login> {
               }
                 return null;
               },
-              isObscure: true,labelText: "person:",prefixIcon: Icons.person,),
+              isObscure: true,labelText: AppLocalizations.of(context)!.name,prefixIcon: Icons.person,),
             SizedBox(height: 16,),
             CustomTextForm(
               controller: TextEditingController(),
@@ -76,10 +78,10 @@ class _LoginState extends State<Login> {
                   }
                   }
 
-                ,isObscure:true,keyboardType: TextInputType.emailAddress,labelText: "Email:",prefixIcon: Icons.email,
+                ,isObscure:true,keyboardType: TextInputType.emailAddress,labelText: AppLocalizations.of(context)!.email,prefixIcon: Icons.email,
             ),
             SizedBox(height: 16,),
-            Text("Forgot Password",style: GoogleFonts.inter(fontWeight: FontWeight.w500,fontSize: 20,color: Colorsmanger.Blue,decoration: TextDecoration.underline)),
+            Text(AppLocalizations.of(context)!.forget_password,style: GoogleFonts.inter(fontWeight: FontWeight.w500,fontSize: 20,color: Colorsmanger.Blue,decoration: TextDecoration.underline)),
             SizedBox(height: 16,),
             SizedBox(height: 16.h),
             CustomTextButton(
@@ -87,14 +89,14 @@ class _LoginState extends State<Login> {
               onTap: () {},
             ),
             SizedBox(height: 24.h),
-            Coustom_Elvated_Button(text: "Login",onPress: _createAccount),
+            Coustom_Elvated_Button(text: AppLocalizations.of(context)!.login,onPress: _createAccount),
             SizedBox(height: 24.h),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text("dont_have_account ? ", style: Theme.of(context).textTheme.bodySmall,),
+                Text(AppLocalizations.of(context)!.dont_have_account, style: Theme.of(context).textTheme.bodySmall,),
                 CustomTextButton(
-                  texts: "Create Account",
+                  texts: AppLocalizations.of(context)!.create_account,
                   onTap: () {
                     Navigator.pushReplacementNamed(
                       context,

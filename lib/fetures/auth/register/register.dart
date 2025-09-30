@@ -1,6 +1,7 @@
 import 'package:evently_app/core/Colorsmanger/Colorsmanger.dart';
 import 'package:evently_app/core/Widget/Custom_Elvated%20button.dart';
 import 'package:evently_app/core/Widget/Custom_Text_Button.dart';
+import 'package:evently_app/l10n/app_localizations_en.dart';
 import 'package:flutter/material.dart';
 import 'package:evently_app/core/Assetsmanger/Assetsmangers.dart';
 import 'package:evently_app/config/language/theme/theme.dart';
@@ -10,6 +11,8 @@ import 'package:google_fonts/google_fonts.dart';
 import 'package:evently_app/fetures/auth/login/login.dart';
 import 'package:evently_app/fetures/auth/register/register.dart';
 import 'package:evently_app/config/resourse/isvalidat.dart';
+
+import '../../../l10n/app_localizations.dart';
 class Register extends StatefulWidget {
   const Register({super.key});
 
@@ -44,7 +47,7 @@ class _RegisterState extends State<Register> {
     return Scaffold(
       appBar: AppBar(
         leading: Icon(Icons.arrow_back),
-        title: Text("Register",),
+        title: Text(AppLocalizations.of(context)!.register),
 
       ),
 
@@ -65,7 +68,7 @@ class _RegisterState extends State<Register> {
                 return "enter the name :";
                 }
 
-                },isObscure: true,labelText: "person:",prefixIcon: Icons.person,),
+                },isObscure: true,labelText: AppLocalizations.of(context)!.name,prefixIcon: Icons.person,),
             SizedBox(height: 16,),
             CustomTextForm(
               validator: (input){
@@ -77,7 +80,7 @@ class _RegisterState extends State<Register> {
               controller: _emailcontroller,
                 isObscure:true,
                 keyboardType: TextInputType.emailAddress,
-                labelText: "Email:",prefixIcon: Icons.email,
+                labelText: AppLocalizations.of(context)!.email,prefixIcon: Icons.email,
                 ),
             SizedBox(height: 16,),
             CustomTextForm(
@@ -96,7 +99,7 @@ class _RegisterState extends State<Register> {
 
                 },
               isObscure: securePassword,
-              labelText: "Password:",prefixIcon: Icons.lock,suffixIcon: IconButton(onPressed: (){
+              labelText: AppLocalizations.of(context)!.password,prefixIcon: Icons.lock,suffixIcon: IconButton(onPressed: (){
               securePassword=!securePassword;
               setState(() {
             
@@ -117,16 +120,16 @@ class _RegisterState extends State<Register> {
 
                 },
               isObscure: securePassword,
-              labelText: "RePassword:",prefixIcon: Icons.lock,suffixIcon: IconButton(onPressed: (){}, icon: Icon( securePassword? Icons.visibility_off:Icons.visibility)),),
+              labelText: AppLocalizations.of(context)!.re_password,prefixIcon: Icons.lock,suffixIcon: IconButton(onPressed: (){}, icon: Icon( securePassword? Icons.visibility_off:Icons.visibility)),),
             SizedBox(height: 16,),
-            Coustom_Elvated_Button(text: "create account", onPress: _createAccount),
+            Coustom_Elvated_Button(text: AppLocalizations.of(context)!.create_account, onPress: _createAccount),
             SizedBox(height: 16,),
             Row(
                 mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text("already have an account?",style: Theme.of(context).textTheme.bodySmall),
+                Text(AppLocalizations.of(context)!.create_account,style: Theme.of(context).textTheme.bodySmall),
                 SizedBox(width: 10,),
-                CustomTextButton(texts: "Login", onTap: (){
+                CustomTextButton(texts: AppLocalizations.of(context)!.login, onTap: (){
                   Navigator.pushReplacementNamed(context, Routesmanger.Logins);
                 }),
                 ],
@@ -151,7 +154,7 @@ class _RegisterState extends State<Register> {
 
 
 
-//GestureDetector(
+// GestureDetector(
 //       onTap: (){
 //         Navigator.pushNamed(context,Routesmanger.Logins);
 //       },

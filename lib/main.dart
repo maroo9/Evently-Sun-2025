@@ -1,9 +1,14 @@
+import 'package:evently_app/l10n/app_localizations.dart';
+import 'package:evently_app/provider/config_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:evently_app/config/language/theme/theme.dart';
 import 'package:evently_app/core/Routesmanger/routesmanger.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 void main() {
-  runApp(const MyApp());
+  runApp(ChangeNotifierProvider(
+    create: (context)=>ConfigProvider(),
+      child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -12,6 +17,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
+    ConfigProvider configProvider = Provider.of<ConfigProvider>(context);
     return ScreenUtilInit(
       designSize: Size(393, 841),
       minTextAdapt: true,
@@ -20,8 +26,13 @@ class MyApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         theme: Thememanger.light,
         darkTheme: Thememanger.dark,
-        themeMode: ThemeMode.dark,
-        locale: Locale("en"),
+        themeMode: configProvider.currenttheme,
+        locale: Locale(configProvider.currentlanguage),
+      localizationsDelegates: AppLocalizations.localizationsDelegates,
+        supportedLocales: [
+          Locale('en'), // English
+          Locale('ar'), // arabic
+        ],
       routes: Routesmanger.routes,
       initialRoute: Routesmanger.mainlayout,
       

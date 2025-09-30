@@ -1,12 +1,14 @@
 import 'package:evently_app/core/Colorsmanger/Colorsmanger.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-
+import 'package:evently_app/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 class DropdownItem extends StatelessWidget {
-  const DropdownItem({super.key,required this.label,required this.selecteditems,required this.menueitems});
+  const DropdownItem({super.key,required this.label,required this.selecteditems,required this.menueitems,required this.onChanged});
   final String label;
   final String selecteditems;
   final List<String> menueitems;
+   final void Function (String?) onChanged;
+
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +18,7 @@ class DropdownItem extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             SizedBox(height: 24,),
-            Text("Theme",style: Theme.of(context).textTheme.labelMedium,),
+            Text(label,style: Theme.of(context).textTheme.labelMedium,),
             SizedBox(height: 16,),
             Container(
               height: 100,
@@ -30,13 +32,14 @@ class DropdownItem extends StatelessWidget {
                   Text(selecteditems,style: Theme.of(context).textTheme.labelMedium,),
                   Spacer(),
                   DropdownButton<String>(
+
                     items: menueitems.map((String value) {
                       return DropdownMenuItem<String>(
                         value: value,
                         child: Text(value),
                       );
                     }).toList(),
-                    onChanged: (_) {},
+                    onChanged: onChanged,
                   ),
 
 
