@@ -5,7 +5,13 @@ import 'package:evently_app/config/language/theme/theme.dart';
 import 'package:evently_app/core/Routesmanger/routesmanger.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
-void main() {
+import 'package:evently_app/provider/config_provider.dart';
+
+import 'core/Prefsmanger/PrefsManger.dart';
+void main() async{
+
+WidgetsFlutterBinding.ensureInitialized();
+   await PrefsManger.init();
   runApp(ChangeNotifierProvider(
     create: (context)=>ConfigProvider(),
       child: const MyApp()));

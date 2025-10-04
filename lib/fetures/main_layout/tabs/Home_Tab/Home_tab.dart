@@ -13,6 +13,9 @@ import 'package:evently_app/core/Colorsmanger/Colorsmanger.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:evently_app/Models/Catogry_model.dart';
+import 'package:evently_app/l10n/app_localizations_ar.dart';
+import 'package:evently_app/l10n/app_localizations_en.dart';
+import 'package:evently_app/l10n/app_localizations.dart';
 import 'package:evently_app/fetures/main_layout/tabs/Home_Tab/Tabitem.dart';
 class HomeTab extends StatefulWidget {
   const HomeTab({super.key});
@@ -56,7 +59,7 @@ class _HomeTabState extends State<HomeTab> {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Welcome Back ✨",style: Theme.of(context).textTheme.headlineSmall,),
+                    Text(AppLocalizations.of(context)!.welcome_message,style: Theme.of(context).textTheme.headlineSmall,),
                     SizedBox(height: 5,),
                     Text("Marwan Hazem" ,style:Theme.of(context).textTheme.headlineLarge,),
                     Padding(padding: EdgeInsets.all(8),

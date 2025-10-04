@@ -18,6 +18,7 @@ class PersonTab extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     AppLocalizations? appLocalizations = AppLocalizations.of(context);
+    ConfigProvider configProvider=Provider.of<ConfigProvider>(context);
     var themeProvider = Provider.of<ConfigProvider>(context);
     var languageProvider = Provider.of<ConfigProvider>(context);
     return SafeArea(
@@ -59,7 +60,8 @@ class PersonTab extends StatelessWidget {
                     onChanged: (newtheme){
                       themeProvider.changeTheme(newtheme=="light"?ThemeMode.light:newtheme=="dark"?ThemeMode.dark:ThemeMode.system);
                     },
-                      label: appLocalizations!.theme, selecteditems: appLocalizations.light, menueitems: ["dark","Light"]
+                      label:  appLocalizations!.theme,
+                      selecteditems:configProvider.isDarkEnabled ? appLocalizations.dark : appLocalizations.light , menueitems: ["light","dark"],
 
                   ),
                   SizedBox(height: 16,),
@@ -67,8 +69,7 @@ class PersonTab extends StatelessWidget {
                     onChanged: (newlanguage){
                       languageProvider.changeLanguage(newlanguage == "English"? "en":"ar");
                     },
-                      label: appLocalizations.language, selecteditems: "En", menueitems: ["English","Arabic"]
-
+                      label: appLocalizations.language, selecteditems: configProvider.isEnglishEnabled?"English" :"Arabic", menueitems: ["English","Arabic"]
                   ),
                   SizedBox(height: 140,),
                   ElevatedButton(
