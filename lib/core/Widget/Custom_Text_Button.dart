@@ -12,9 +12,7 @@ class CustomTextButton extends StatelessWidget {
   @override
   Widget build(BuildContext context){
     return    GestureDetector(
-      onTap: (){
-        Navigator.pushNamed(context,Routesmanger.Logins);
-      },
+      onTap:onTap,
       child:      Text(texts!,style: GoogleFonts.inter(fontSize: 16.sp,fontWeight: FontWeight.w500, decoration: TextDecoration.underline,color: Colorsmanger.Blue),),
 
     );

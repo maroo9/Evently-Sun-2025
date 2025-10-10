@@ -1,20 +1,29 @@
 import 'package:evently_app/core/Colorsmanger/Colorsmanger.dart';
+import 'package:evently_app/core/Routesmanger/routesmanger.dart';
 import 'package:evently_app/core/Widget/Custom_Elvated%20button.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:evently_app/provider/config_provider.dart';
 import 'package:evently_app/fetures/main_layout/tabs/person_tab/DropDown.dart';
 import 'package:evently_app/core/Assetsmanger/Assetsmangers.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:evently_app/l10n/app_localizations.dart';
 import 'package:evently_app/l10n/app_localizations_ar.dart';
 import 'package:evently_app/l10n/app_localizations_en.dart';
 import 'package:provider/provider.dart';
+import 'package:firebase_auth_platform_interface/firebase_auth_platform_interface.dart';
 import 'package:evently_app/provider/config_provider.dart';
 import '../../../../provider/config_provider.dart';
-class PersonTab extends StatelessWidget {
+class PersonTab extends StatefulWidget {
   const PersonTab({super.key});
 
+  @override
+  State<PersonTab> createState() => _PersonTabState();
+}
+
+class _PersonTabState extends State<PersonTab> {
   @override
   Widget build(BuildContext context) {
     AppLocalizations? appLocalizations = AppLocalizations.of(context);
@@ -78,7 +87,8 @@ class PersonTab extends StatelessWidget {
                       foregroundColor: Colorsmanger.Whiteblue,
                     padding: EdgeInsets.all( 16),
                       textStyle: GoogleFonts.inter(fontSize: 20,fontWeight: FontWeight.w400)
-                    ),onPressed: (){}, child:Row(
+                    ),onPressed: _logeout,
+                    child:Row(
                     children: [
 
                       Icon(Icons.logout),
@@ -91,6 +101,11 @@ class PersonTab extends StatelessWidget {
     ),
 
     );
+  }
+
+  void _logeout() async{
+    await  FirebaseAuth.instance.signOut();
+    Navigator.pushReplacementNamed(context, Routesmanger.Logins);
   }
 }
 

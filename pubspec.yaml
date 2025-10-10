@@ -40,6 +40,10 @@ dependencies:
   flutter_localization: ^0.3.3
   provider: ^6.1.5+1
   shared_preferences: ^2.5.3
+  date_picker_plus: ^4.2.0
+  firebase_auth: ^6.1.0
+  firebase_core: ^4.1.1
+  fluttertoast: ^9.0.0
 
 dev_dependencies:
   flutter_test:

@@ -3,6 +3,7 @@ import 'package:evently_app/core/Colorsmanger/Colorsmanger.dart';
 import 'package:evently_app/core/Routesmanger/routesmanger.dart';
 import 'package:evently_app/core/Widget/Custom_Text_Button.dart';
 import 'package:evently_app/core/Widget/Custom_text_form.dart';
+import 'package:evently_app/core/extension/eventtime.dart';
 import 'package:evently_app/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:evently_app/core/Widget/Custom_Elvated button.dart';
@@ -22,6 +23,7 @@ TimeOfDay selectedTime = TimeOfDay.now();
 class _CreataEventState extends State<CreataEvent> {
   late final TextEditingController _textcontroller;
   late final TextEditingController _descriptioncontroller;
+  DateTime selectedDate = DateTime.now();
 
   void initState() {
     super.initState();
@@ -76,7 +78,7 @@ class _CreataEventState extends State<CreataEvent> {
             Row(
               children: [
                 Icon(Icons.calendar_month,),
-                Text(AppLocalizations.of(context)!.event_date, style: Theme
+                Text("${selectedDate.year}-${selectedDate.month}-${selectedDate.day}", style: Theme
                     .of(context)
                     .textTheme
                     .labelSmall,),
@@ -91,7 +93,7 @@ class _CreataEventState extends State<CreataEvent> {
             Row(
               children: [
                 Icon(Icons.timelapse_outlined,),
-                Text(AppLocalizations.of(context)!.choose_time, style: Theme
+                Text("${selectedTime.hour}:${selectedTime.minute}", style: Theme
                     .of(context)
                     .textTheme
                     .labelSmall,),
@@ -111,38 +113,36 @@ class _CreataEventState extends State<CreataEvent> {
                 borderRadius: BorderRadius.circular(16),
                 color: Colorsmanger.Whiteblue,
               ),
-              child: CustomTextButton(texts: "Choose Location", onTap: () {
-                Navigator.pushNamed(context, Routesmanger.Locations);
-              }),
+              child:null
             )
           ],
         )
     );
   }
 
-  void _selectEventDate() async {
-    selectedDate = await showDatePicker(context: context,
+  void _selectEventDate()async {
+    selectedDate = await  showDatePicker(
+        context: context,
         firstDate: DateTime.now(),
-        lastDate: DateTime.now().add(Duration(days: 365))) ?? selectedDate;
+        lastDate: DateTime.now().add(Duration(days: 365)))
+        ?? selectedDate;
     print(selectedDate.toString());
-    selectedDate = selectedDate.copyWith(
-        hour: selectedTime.hour, minute: selectedTime.minute);
     setState(() {
 
     });
   }
 
+
   void _selectEventTime() async {
-    selectedTime =
-        await showTimePicker(context: context, initialTime: TimeOfDay.now()) ??
-            selectedTime;
-    selectedDate = selectedDate.copyWith(
-        hour: selectedTime.hour, minute: selectedTime.minute);
-
-
+    selectedTime=
+    await showTimePicker(context: context, initialTime: TimeOfDay.now())
+        ?? selectedTime;
+        selectedDate = selectedDate.copyWith(hour: selectedTime.hour, minute: selectedTime.minute);
     setState(() {
 
     });
+
+    }
   }
 
 // Coustom_Elvated_Button(text: "Choose date", onPress: (){
@@ -184,4 +184,4 @@ class _CreataEventState extends State<CreataEvent> {
 //   ),
 //
 
-}
+

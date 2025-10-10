@@ -1,10 +1,13 @@
 import 'package:evently_app/l10n/app_localizations.dart';
 import 'package:evently_app/provider/config_provider.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:evently_app/config/language/theme/theme.dart';
 import 'package:evently_app/core/Routesmanger/routesmanger.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
+import 'package:firebase_auth_platform_interface/firebase_auth_platform_interface.dart';
 import 'package:evently_app/provider/config_provider.dart';
 
 import 'core/Prefsmanger/PrefsManger.dart';
@@ -12,6 +15,8 @@ void main() async{
 
 WidgetsFlutterBinding.ensureInitialized();
    await PrefsManger.init();
+
+await  Firebase.initializeApp();
   runApp(ChangeNotifierProvider(
     create: (context)=>ConfigProvider(),
       child: const MyApp()));
@@ -40,7 +45,7 @@ class MyApp extends StatelessWidget {
           Locale('ar'), // arabic
         ],
       routes: Routesmanger.routes,
-      initialRoute: Routesmanger.mainlayout,
+      initialRoute:FirebaseAuth.instance.currentUser== null? Routesmanger.Logins:Routesmanger.mainlayout ,
       
       ),
     );
