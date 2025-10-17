@@ -15,13 +15,13 @@ class CustomTextForm extends StatelessWidget {
     this.Lines=1,
     });
   // makes the variable
-  final String? labelText;   // as String "Name"
-  final String? hintText;   // as String "Hint name"
-  final IconData?prefixIcon; // as (IconData) that holds all icons
-  final Widget? suffixIcon;     // as widget to  use  IconButton
+  final String? labelText;   /// as String "Name"
+  final String? hintText;   /// as String "Hint name"
+  final IconData?prefixIcon; /// as (IconData) that holds all icons
+  final Widget? suffixIcon;     /// as widget to  use  IconButton
   final TextInputType? keyboardType;
   final bool isObscure;
-  String? Function(String?)? validator;
+  String? Function(String?)? validator;  /// work as the condition of the inputs by user
   final TextEditingController controller;
 
  // final bool isSecure;

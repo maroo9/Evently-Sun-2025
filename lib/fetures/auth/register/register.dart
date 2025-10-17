@@ -1,3 +1,4 @@
+import 'package:evently_app/Models/User_Model.dart';
 import 'package:evently_app/core/Colorsmanger/Colorsmanger.dart';
 import 'package:evently_app/core/Widget/Custom_Elvated%20button.dart';
 import 'package:evently_app/core/Widget/Custom_Text_Button.dart';
@@ -103,6 +104,8 @@ class _RegisterState extends State<Register> {
                 SizedBox(height: 16,),
                 CustomTextForm(
                   controller: _passwordcontroller,
+                  //You call validate() inside the ElevatedButton to check all user input before sending it to your backend or Firebase.
+                  // It’s the step that ensures all input conditions are correct.
                   validator: (input) {
                     if (input == null || input
                         .trim()
@@ -183,8 +186,8 @@ class _RegisterState extends State<Register> {
     if (formkey.currentState?.validate() == false) return;
     try {
       uitils.ShowLoading(context);
-      UserCredential userCredential = await Fairebaeservices.login(_emailcontroller.text, _passwordcontroller.text);
-     print(userCredential.user?.uid);
+      UserCredential userCredential = await Fairebaeservices.registers(_emailcontroller.text, _passwordcontroller.text);
+    await  Fairebaeservices.addUasertoFireStore(UserModel(name:_namecontroller.text, id:userCredential.user!.uid, email: _emailcontroller.text));
       uitils.hideDialog(context);
       uitils.ShowToastMassage("succefuly regested", Colors.green);
       Navigator.pushReplacementNamed(context, Routesmanger.Logins);

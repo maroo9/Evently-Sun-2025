@@ -1,4 +1,5 @@
 import 'package:evently_app/Models/Event_Model.dart';
+import 'package:evently_app/Models/User_Model.dart';
 import 'package:evently_app/core/Widget/Custom_tab_bar.dart';
 import 'package:evently_app/fetures/main_layout/tabs/Home_Tab/Event_Item.dart';
 import 'package:evently_app/fetures/main_layout/tabs/Home_Tab/Tabitem.dart';
@@ -61,7 +62,7 @@ class _HomeTabState extends State<HomeTab> {
                   children: [
                     Text(AppLocalizations.of(context)!.welcome_message,style: Theme.of(context).textTheme.headlineSmall,),
                     SizedBox(height: 5,),
-                    Text("Marwan Hazem" ,style:Theme.of(context).textTheme.headlineLarge,),
+                    Text( UserModel.currentUser!.name,style:GoogleFonts.inter(fontSize: 20,fontWeight: FontWeight.w700),),
                     Padding(padding: EdgeInsets.all(8),
 
                    child: Row(
@@ -101,13 +102,14 @@ CustomTabBar(
   fgselecteditem: Colorsmanger.Blue,
   unbgselecteditem: Colors.transparent,
   unfgselecteditem: Colorsmanger.Whiteblue,
+  catogries: [], oncatogryTapcliced: (CatogryModel ) {  },
 ),
           ],
               ),
               ),
               ),
            ListView.separated(
-                  itemBuilder: (context,index)=>EventItem(event: EventModel(catogryModel: CatogryModel.Catogries[0], title: "Meeting for Updating The Development Method ", description: "Meeting for Updating The Development Method ", dataTime: DateTime.now(), timeOfDay: TimeOfDay.now(), imagepath: "")),
+                  itemBuilder: (context,index)=>EventItem(event: EventModel(catogryModel: CatogryModel.Catogries[0], title: "Meeting for Updating The Development Method ", description: "Meeting for Updating The Development Method ", dataTime: DateTime.now(), timeOfDay: TimeOfDay.now(), imagepath: "", eveintid: "", userid: "")),
                   separatorBuilder: (context,index)=>SizedBox(height: 16,),
                   itemCount: 20,
                  shrinkWrap: true, // Use shrinkWrap to prevent ListView from taking infinite space

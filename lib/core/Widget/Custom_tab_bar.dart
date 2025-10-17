@@ -3,14 +3,23 @@ import 'package:evently_app/core/Colorsmanger/Colorsmanger.dart';
 import 'package:evently_app/Models/Catogry_model.dart';
 import 'package:evently_app/fetures/main_layout/tabs/Home_Tab/Tabitem.dart';
 class CustomTabBar extends StatefulWidget {
-  const CustomTabBar({super.key,required this.bgselecteditem,required this.unfgselecteditem,required this.unbgselecteditem,required this.fgselecteditem,});
+  const CustomTabBar({super.key,required this.bgselecteditem
+    ,required this.unfgselecteditem
+    ,required this.unbgselecteditem
+    ,required this.fgselecteditem
+    ,required this.catogries
+    , required this.oncatogryTapcliced
 
-  @override
-  State<CustomTabBar> createState() => _CustomTabBarState();
+  });
+  final List<CatogryModel> catogries;
   final Color bgselecteditem;
   final Color fgselecteditem;
   final Color unbgselecteditem;
   final Color unfgselecteditem;
+  final void  Function(CatogryModel)? oncatogryTapcliced;
+  @override
+  State<CustomTabBar> createState() => _CustomTabBarState();
+
 }
 int selectedIndex=0;
 class _CustomTabBarState extends State<CustomTabBar> {
@@ -20,6 +29,7 @@ class _CustomTabBarState extends State<CustomTabBar> {
       length: CatogryModel.Catogries.length,
       child: TabBar(
         onTap: (index){
+          widget.oncatogryTapcliced?.call(widget.catogries[index]);
           selectedIndex=index;
           setState(() {
 

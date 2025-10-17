@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-
+/// this is the  config provider that make to change the  app theme and language theme
 class ConfigProvider extends ChangeNotifier{
   ThemeMode currenttheme=ThemeMode.light;
   String currentlanguage="en";

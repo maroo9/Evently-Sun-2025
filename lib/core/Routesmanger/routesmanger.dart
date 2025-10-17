@@ -7,6 +7,7 @@ import 'package:evently_app/fetures/auth/register/register.dart';
 import 'package:evently_app/screens/splashscreen.dart';
 import 'package:evently_app/screens/onboriding1.dart';
 import 'package:evently_app/screens/onbording2.dart';
+import 'package:evently_app/Googlemaps servicess/Google_mapsservicess.dart';
 abstract class Routesmanger {
   static const String Logins = "/login";
   static const String mainlayout = "/main_layout";
@@ -16,6 +17,7 @@ abstract class Routesmanger {
   static const String Splaschreens = "/splashscreen";
   static const String Onboriding1s = "/onboriding1";
   static const String Onboriding12 = "/onboriding2";
+  static const String Googlemaps = "/googlemaps";
 
   static Map<String, WidgetBuilder> routes={
    Logins: (context)=>Login(),
@@ -26,6 +28,7 @@ abstract class Routesmanger {
     Splaschreens:(context)=>Splashscreen(),
     Onboriding1s:(context)=>Onboriding1(),
     Onboriding12:(context)=>onboarding2(),
+    Googlemaps:(context)=>GoogleMapsservicess(),
 
 };
 

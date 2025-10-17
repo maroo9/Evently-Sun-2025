@@ -1,4 +1,5 @@
 import 'package:evently_app/Firebase_Servicess/FairebaseServicess.dart';
+import 'package:evently_app/Models/User_Model.dart';
 import 'package:evently_app/core/Assetsmanger/Assetsmangers.dart';
 import 'package:evently_app/config/language/theme/theme.dart';
 import 'package:evently_app/core/Uitiles/Uiutills.dart';
@@ -26,6 +27,12 @@ class Login extends StatefulWidget {
   State<Login> createState() => _LoginState();
 
 }
+///Yes — the controllers are the middle layer (bridge) between
+/// your UI (TextFields) and your logic (Firebase login method).
+///They hold the user’s input and let your logic read it easily.
+///Controllers are part of the UI layer
+///✅ They can pass data to backend or show backend data
+///✅ They act as a bridge, but they “live” on the UI side, not the backend side
 class _LoginState extends State<Login> {
 bool securePassword=true;
 late TextEditingController _namecontroller;    // this
@@ -34,18 +41,15 @@ late TextEditingController _passwordcontroller;
 late TextEditingController _repasswordcontroller;//
 GlobalKey<FormState> _formkey=GlobalKey<FormState>();
   void initState() {
-    _namecontroller = TextEditingController();
+
     _emailcontroller = TextEditingController();
     _passwordcontroller = TextEditingController();
-    _repasswordcontroller = TextEditingController();
     super.initState();
   }
 
   void dispose() {
-    _namecontroller.dispose();
     _emailcontroller.dispose();
     _passwordcontroller.dispose();
-    _repasswordcontroller.dispose();
     super.dispose();
   }
 
@@ -65,38 +69,51 @@ GlobalKey<FormState> _formkey=GlobalKey<FormState>();
                     height: 186,),
                   SizedBox(height: 24,),
                   CustomTextForm(
-                    controller: _namecontroller,
-                    validator: (input) {
-                      if (input == null || input
-                          .trim()
-                          .isEmpty) {
-                        return "enter the name :";
-                      }
-                      return null;
-                    },
-                    isObscure: false,
-                    labelText: AppLocalizations.of(context)!.name,
-                    prefixIcon: Icons.person,),
-                  SizedBox(height: 16,),
-                  CustomTextForm(
                     controller: _emailcontroller,
-                    validator: (input) {
-                      if (input == null || input
-                          .trim()
-                          .isEmpty) {
-                        return "enter the email :";
-                      }
-                      if (!Validator.isValidEmail(input)) {
-                        return "the email format isn't coreect ";
-                      }
-                    }
+                     validator: (input) {
+                       if (input == null || input
+                           .trim()
+                           .isEmpty) {
+                         return "enter the email :";
+                       }
+                       if (!Validator.isValidEmail(input)) {
+                         return "the email format isn't coreect ";
+                       }
+                     },
 
-                    ,
-                    isObscure: false,
-                    keyboardType: TextInputType.emailAddress,
-                    labelText: AppLocalizations.of(context)!.email,
-                    prefixIcon: Icons.email,
-                  ),
+    isObscure: false,
+    keyboardType: TextInputType.emailAddress,
+    labelText: AppLocalizations.of(context)!.email,
+    prefixIcon: Icons.email,
+    ),
+                  SizedBox(height: 16,),
+    CustomTextForm(
+    controller: _passwordcontroller,
+    validator: (input) {
+    if (input == null || input
+        .trim()
+        .isEmpty) {
+    return "the password is empty  :";
+    }
+    if (input.length < 8) {
+    return " the password should be at least 6";
+    }
+    if (Validator.isValidEmail(input)) {
+    return "the email format isn't coreect ";
+    }
+    },
+    isObscure: securePassword,
+    labelText: AppLocalizations.of(context)!.password,
+    prefixIcon: Icons.lock,
+      suffixIcon: IconButton(onPressed: () {
+        securePassword = !securePassword;
+        setState(() {
+
+        });
+      },
+          icon: Icon(securePassword ? Icons.visibility_off : Icons
+              .visibility)),
+      keyboardType: TextInputType.visiblePassword,),
                   SizedBox(height: 16,),
                   Text(AppLocalizations.of(context)!.forget_password,
                       style: GoogleFonts.inter(fontWeight: FontWeight.w500,
@@ -183,30 +200,26 @@ GlobalKey<FormState> _formkey=GlobalKey<FormState>();
                       ],
                     ),
                   ),
+
                 ]
+
             ),
           ),
         ),
       ),
     );
   }
-
+/// this is the static login function that come from the  firebse service to login:
   void _login() async {
     if (_formkey.currentState?.validate() == false) return;
     try {
       uitils.ShowLoading(context);
-      UserCredential userCredential = await  Fairebaeservices.login(_emailcontroller.text, _namecontroller.text);
-      print(userCredential.user?.uid);
+      /// taking the email and passwords by controlers
+      UserCredential userCredential = await  Fairebaeservices.login(_emailcontroller.text, _passwordcontroller.text);
+      UserModel.currentUser= await Fairebaeservices.getUserId(userCredential.user!.uid);
       uitils.hideDialog(context);
-      Fluttertoast.showToast(
-          msg: "Successfully LOGINS ",
-          toastLength: Toast.LENGTH_SHORT,
-          gravity: ToastGravity.BOTTOM,
-          backgroundColor: Colors.green,
-          textColor: Colors.black,
-          fontSize: 16.0
-      );
       Navigator.pushReplacementNamed(context, Routesmanger.mainlayout);
+      print(" Login success, navigating now...");
     } on FirebaseAuthException catch (e) {
       uitils.hideDialog(context);
       uitils.ShowToastMassage(e.code, Colors.red);

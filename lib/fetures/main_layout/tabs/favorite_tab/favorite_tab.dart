@@ -35,7 +35,7 @@ class FavoriteTab extends StatelessWidget {
             child: ListView.separated(
               itemCount: 20,
               separatorBuilder: (context,index)=>SizedBox(height: 16,),
-              itemBuilder: (context,index)=>EventItem(event: EventModel(catogryModel: CatogryModel.Catogries[0], title: "Meeting for Updating The Development Method ", description: "Meeting for Updating The Development Method ", dataTime: DateTime.now(), timeOfDay: TimeOfDay.now(), imagepath: "")),
+              itemBuilder: (context,index)=>EventItem(event: EventModel(catogryModel: CatogryModel.Catogries[0], title: "Meeting for Updating The Development Method ", description: "Meeting for Updating The Development Method ", dataTime: DateTime.now(), timeOfDay: TimeOfDay.now(), imagepath: "", eveintid: "", userid: "")),
 
     ),
             ),

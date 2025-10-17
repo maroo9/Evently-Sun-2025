@@ -22,6 +22,7 @@ class MainLayout extends StatefulWidget {
 }
 
 class _MainLayoutState extends State<MainLayout> {
+
   final List<Widget> tab = [
     HomeTab(),
     LocationTab(),

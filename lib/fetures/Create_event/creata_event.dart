@@ -1,10 +1,16 @@
+import 'package:evently_app/Firebase_Servicess/FairebaseServicess.dart';
+import 'package:evently_app/Models/Catogry_model.dart';
+import 'package:evently_app/Models/Event_Model.dart';
+import 'package:evently_app/Models/User_Model.dart';
 import 'package:evently_app/core/Assetsmanger/Assetsmangers.dart';
 import 'package:evently_app/core/Colorsmanger/Colorsmanger.dart';
 import 'package:evently_app/core/Routesmanger/routesmanger.dart';
+import 'package:evently_app/core/Uitiles/Uiutills.dart';
 import 'package:evently_app/core/Widget/Custom_Text_Button.dart';
 import 'package:evently_app/core/Widget/Custom_text_form.dart';
 import 'package:evently_app/core/extension/eventtime.dart';
 import 'package:evently_app/l10n/app_localizations.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:evently_app/core/Widget/Custom_Elvated button.dart';
 import 'package:evently_app/core/Widget/Custom_tab_bar.dart';
@@ -19,21 +25,25 @@ class CreataEvent extends StatefulWidget {
 }
 DateTime selectedDate = DateTime.now();
 TimeOfDay selectedTime = TimeOfDay.now();
-
+CatogryModel selcetedcatogry=CatogryModel.Catogries[0];
+var formKey = GlobalKey<FormState>();
 class _CreataEventState extends State<CreataEvent> {
-  late final TextEditingController _textcontroller;
+  late final TextEditingController _titlecontroller;
   late final TextEditingController _descriptioncontroller;
+late  CatogryModel selcetedcatogry=CatogryModel.Catogries[0];
+
   DateTime selectedDate = DateTime.now();
 
   void initState() {
     super.initState();
-    _textcontroller = TextEditingController();
+    _titlecontroller = TextEditingController();
     _descriptioncontroller = TextEditingController();
+    selcetedcatogry=CatogryModel.Catogries[0];
   }
 
   @override
   void dispose() {
-    _textcontroller.dispose();
+    _titlecontroller.dispose();
     _descriptioncontroller.dispose();
     super.dispose();
   }
@@ -50,7 +60,12 @@ class _CreataEventState extends State<CreataEvent> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Image.asset(Imagemanger.Meetingphoto),
-            CustomTabBar(bgselecteditem: Colorsmanger.Blue,
+            CustomTabBar(
+              oncatogryTapcliced: (catogry){
+                selcetedcatogry=catogry;
+              },
+              catogries:CatogryModel.Catogries,
+              bgselecteditem: Colorsmanger.Blue,
               fgselecteditem: Colorsmanger.Whiteblue,
               unbgselecteditem: Colors.transparent,
               unfgselecteditem: Colorsmanger.Blue,),
@@ -62,7 +77,7 @@ class _CreataEventState extends State<CreataEvent> {
             CustomTextForm(labelText: AppLocalizations.of(context)!.event_title,
                 hintText: "Enter Event Title",
                 prefixIcon: Icons.edit_note_outlined,
-                controller: _textcontroller,
+                controller: _titlecontroller,
                 validator: (input) {}),
             SizedBox(height: 16,),
             Text(AppLocalizations.of(context)!.description, style: Theme
@@ -72,7 +87,7 @@ class _CreataEventState extends State<CreataEvent> {
             CustomTextForm(Lines: 5,
                 labelText: "Event Description",
                 hintText: "Enter Event Title",
-                controller: _textcontroller,
+                controller: _descriptioncontroller,
                 validator: (input) {}),
             SizedBox(height: 16,),
             Row(
@@ -103,17 +118,16 @@ class _CreataEventState extends State<CreataEvent> {
 
               ],
             ),
-            Text(AppLocalizations.of(context)!.location, style: Theme
-                .of(context)
-                .textTheme
-                .labelMedium,),
+
             Container(
               padding: EdgeInsets.all(8),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(16),
                 color: Colorsmanger.Whiteblue,
               ),
-              child:null
+              child: Expanded(child:
+              Coustom_Elvated_Button(text: AppLocalizations.of(context)!.add_event,
+                  onPress: _createEevent)),
             )
           ],
         )
@@ -143,6 +157,25 @@ class _CreataEventState extends State<CreataEvent> {
     });
 
     }
+
+    void _createEevent()async{
+    EventModel event=EventModel(
+      catogryModel:selcetedcatogry,
+        title:_titlecontroller.text ,
+        description: _descriptioncontroller.text,
+        dataTime:selectedDate,
+        timeOfDay: selectedTime,
+        imagepath: "",
+        eveintid: "",
+        userid: UserModel.currentUser!.id);
+    uitils.ShowLoading(context);
+    await  Fairebaeservices.AddeventtoFirestore(event, context);
+    uitils.hideDialog(context);
+    uitils.ShowToastMassage("Eventcreated succfully", Colors.green);
+    Navigator.pop(context, );
+
+    }
+
   }
 
 // Coustom_Elvated_Button(text: "Choose date", onPress: (){
