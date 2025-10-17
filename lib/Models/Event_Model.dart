@@ -11,7 +11,7 @@ class EventModel {
   String imagepath;
 
   EventModel({required this.catogryModel, required this.title, required this.description, required this.dataTime, required this.timeOfDay, required this.imagepath, required this.eveintid, required this.userid});
-
+  /// like we did in the Event model  what well retrive or get from firestore
   EventModel.fromjson(Map<String, dynamic> json,BuildContext context):this(
     eveintid: json["eventId"],
     userid: json["userId"],
@@ -19,7 +19,7 @@ class EventModel {
         CatogryModel)=>CatogryModel.id==json["catogryId"]),
     title: json["title"],
     description: json["description"],
-    dataTime: json["dataTime"],
+    dataTime: json["dataTime"].toDate(),
     timeOfDay: json["timeOfDay"],
     imagepath: json["imagepath"],
   );

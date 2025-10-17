@@ -17,6 +17,7 @@ import 'package:evently_app/Models/Catogry_model.dart';
 import 'package:evently_app/l10n/app_localizations_ar.dart';
 import 'package:evently_app/l10n/app_localizations_en.dart';
 import 'package:evently_app/l10n/app_localizations.dart';
+import 'package:evently_app/Firebase_Servicess/FairebaseServicess.dart';
 import 'package:evently_app/fetures/main_layout/tabs/Home_Tab/Tabitem.dart';
 class HomeTab extends StatefulWidget {
   const HomeTab({super.key});
@@ -27,11 +28,13 @@ class HomeTab extends StatefulWidget {
 
 class _HomeTabState extends State<HomeTab> {
   int selectedIndex=0;
+  List<EventModel> events=[];
 @override
   void initState() {
     // TODO: implement initState
     super.initState();
-  }
+ getEvents();
+}
 
   @override
   Widget build(BuildContext context) {
@@ -108,13 +111,20 @@ CustomTabBar(
               ),
               ),
               ),
-           ListView.separated(
-                  itemBuilder: (context,index)=>EventItem(event: EventModel(catogryModel: CatogryModel.Catogries[0], title: "Meeting for Updating The Development Method ", description: "Meeting for Updating The Development Method ", dataTime: DateTime.now(), timeOfDay: TimeOfDay.now(), imagepath: "", eveintid: "", userid: "")),
-                  separatorBuilder: (context,index)=>SizedBox(height: 16,),
-                  itemCount: 20,
-                 shrinkWrap: true, // Use shrinkWrap to prevent ListView from taking infinite space
-                 physics: NeverScrollableScrollPhysics(),
-               ),
+
+             Column(children: [
+
+
+             events.isEmpty?Center(child: CircularProgressIndicator(),): ListView.separated(
+                    itemBuilder: (context,index)=>EventItem(event: events[index],),
+                    separatorBuilder: (context,index)=>SizedBox(height: 16,),
+                    itemCount: events.length,
+                   shrinkWrap: true, // Use shrinkWrap to prevent ListView from taking infinite space
+                   physics: NeverScrollableScrollPhysics(),
+                 ),
+    ],
+
+    ),
 
             ],
 
@@ -122,4 +132,12 @@ CustomTabBar(
         ),
       );
   }
+  void getEvents()async {
+    events= await Fairebaeservices.getEvents(context);
+    setState(() {
+
+    });
+  }
+
 }
+
