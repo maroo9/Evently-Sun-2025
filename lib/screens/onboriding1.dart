@@ -80,7 +80,7 @@ class Onboriding1 extends StatelessWidget {
 ],
     ),
         Coustom_Elvated_Button(text: "lets start", onPress: (){
-          Navigator.pushNamed(context, Routesmanger.Logins);
+          Navigator.pushNamed(context, Routesmanger.Onboriding12);
 
         }),
 

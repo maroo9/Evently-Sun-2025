@@ -21,7 +21,7 @@ class Fairebaeservices {
   }
 
   static addUasertoFireStore(UserModel user) {
-    ///>>>>> this way to create  the collection  to firestore that store the id and the name and email
+    ///>>>>> this way to create  the collection  to firestore that store or reserve the place like: the id and the name and email
     // FirebaseFirestore db = FirebaseFirestore.instance;
     // // CollectionReference <Map<String, dynamic>> usercollection = db.collection(
     // //     "users");
@@ -64,11 +64,12 @@ class Fairebaeservices {
 return  documentSnapshot.data();
 
   }
+  /// its the same way to add the  id and title and discription to firestore
  static Future<void> AddeventtoFirestore(EventModel event,BuildContext context){
     FirebaseFirestore db=FirebaseFirestore.instance;  /// this mean now we have object of data base
 CollectionReference<EventModel>eventscollection= db.collection("Events").withConverter<EventModel>(
     fromFirestore: (snapshot,_)=>EventModel.fromjson(snapshot.data()!,context),
-    toFirestore: (event, _ )=>event.toJosn()); /// now we jsoncraete  the collection
+    toFirestore: (event, _ )=>event.toJosn()); /// now we json craete  the collection  with   rommse or reservied  places
 eventscollection.doc();
 DocumentReference<EventModel> eventdocument=eventscollection.doc();
 event.eveintid=eventdocument.id;

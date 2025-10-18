@@ -52,7 +52,8 @@ class MyApp extends StatelessWidget {
           Locale('ar'), // arabic
         ],
       routes: Routesmanger.routes,
-      initialRoute: FirebaseAuth.instance.currentUser== null? Routesmanger.Logins:Routesmanger.mainlayout ,
+      initialRoute: Routesmanger.Splaschreens,
+        ///FirebaseAuth.instance.currentUser== null? Routesmanger.Logins:Routesmanger.mainlayout ,
       //
       ),
     );
