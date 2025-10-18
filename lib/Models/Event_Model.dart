@@ -19,7 +19,7 @@ class EventModel {
         CatogryModel)=>CatogryModel.id==json["catogryId"]),
     title: json["title"],
     description: json["description"],
-    dataTime: json["dataTime"],
+    dataTime: json["dataTime"].toDate(),
     timeOfDay: json["timeOfDay"],
     imagepath: json["imagepath"],
   );
