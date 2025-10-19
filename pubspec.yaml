@@ -91,6 +91,7 @@ flutter:
      - assets/images/img_15.png
      - assets/images/img_16.png
      - assets/images/img_17.png
+     - assets/maps_tyle/map_style.json
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

@@ -46,7 +46,7 @@ class Fairebaeservices {
 
   }
   static  getUserId(String id)async{
-    ///>>>>>>>>> this is  way to get  the user id and details: of the
+    ///>>>>>>>>> this is  way to get  the user id and details: where in id
 //     FirebaseFirestore db = FirebaseFirestore.instance;
 //     CollectionReference <Map<String, dynamic>> usercollection = db.collection("Users");
 //     DocumentReference <Map<String, dynamic>> UserDocument = usercollection.doc(id);
@@ -77,7 +77,6 @@ class Fairebaeservices {
   static Future<void> AddeventtoFirestore(EventModel event,BuildContext context){
     CollectionReference <EventModel>eventcollection=getEventCollection(context);
     /// its the  normal way  to  craeate the collection and add the data to fire store
-    ///
 //     FirebaseFirestore db=FirebaseFirestore.instance;  /// this mean now we have object of data base
 // CollectionReference<EventModel>eventscollection= db.collection("Events").withConverter<EventModel>(
 //     fromFirestore: (snapshot,_)=>EventModel.fromjson(snapshot.data()!,context),
