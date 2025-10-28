@@ -48,12 +48,46 @@ class onboarding2 extends StatelessWidget {
     Text("Find Events That Inspire You",style:GoogleFonts.inter(fontWeight: FontWeight.w700,fontSize: 20,color: Colorsmanger.Blue)),
     SizedBox(height :28,),
     Text("Dive into a world of events crafted to fit your unique interests. Whether you're into live music, art workshops, professional networking, or simply discovering new experiences, we have something for everyone. Our curated recommendations will help you explore, connect, and make the most of every opportunity around you.",style:Theme.of(context).textTheme.labelSmall,),
-    SizedBox(height: 28,),
-    Coustom_Elvated_Button(text: "lets start", onPress: (){
-    Navigator.pushNamed(context, Routesmanger.Logins);
-
-    }),
-
+    SizedBox(height: 39,),
+      SizedBox(height: 44,),
+      Row(
+        children: [
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              shape: const CircleBorder(
+                side: BorderSide(
+                  color: Colorsmanger.Blue, // border color
+                  width: 2, // border thickness
+                ),
+              ),
+              padding: const EdgeInsets.all(4), // circle size
+              backgroundColor: Colors.transparent, // transparent inside
+              shadowColor: Colors.transparent,
+            ),
+            onPressed: (){
+              Navigator.pushNamed(context, Routesmanger.Onboriding1s);
+            }, child: Icon(Icons.arrow_back,color:  Colorsmanger.Blue,
+          ),
+          ),
+          Spacer(),
+          ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              shape: const CircleBorder(
+                side: BorderSide(
+                  color: Colorsmanger.Blue, // border color
+                  width: 2, // border thickness
+                ),
+              ),
+              padding: const EdgeInsets.all(4), // circle size
+              backgroundColor: Colors.transparent, // transparent inside
+              shadowColor: Colors.transparent,
+            ),// no shadow
+            onPressed: (){
+              Navigator.pushNamed(context, Routesmanger.Onboriding13);
+            },  child: Icon(Icons.arrow_forward,color:  Colorsmanger.Blue,),
+          ),
+        ],
+      ),
     ],
     ),
     ],

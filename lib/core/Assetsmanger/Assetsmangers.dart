@@ -15,6 +15,8 @@ abstract class Imagemanger{
   static const String Egyptflags="assets/images/img_15.png";
   static const String Espaniatflag="assets/images/img_16.png";
   static const String Catsimages="assets/images/img_17.png";
+  static const String Womenphoto="assets/images/img_18.png";
+  static const String WomenWithPhone="assets/images/img_19.png";
 
 
 }

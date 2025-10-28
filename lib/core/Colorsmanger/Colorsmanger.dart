@@ -1,5 +1,4 @@
 import 'package:flutter/animation.dart';
-
 class Colorsmanger{
   static const Color Whiteblue=Color(0xFFF2FEFF);
   static const Color Grey=Color(0xFF7B7B7B);

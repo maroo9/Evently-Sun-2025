@@ -11,12 +11,12 @@ String cureenttheme=thememode ==ThemeMode.light? "light" :"dark";
     prefs.setString(CacheConstant.themekey, cureenttheme);
   }
   static ThemeMode?  getSaveTheme (){
-    String? savedTheme = prefs.getString(CacheConstant.themekey);
-    if (savedTheme == null) {
+    String? savedThseme = prefs.getString(CacheConstant.themekey);
+    if (savedThseme == null) {
       return null;
     }
     else {
-      ThemeMode themeMode = savedTheme == 'light' ? ThemeMode.light : ThemeMode.dark;
+      ThemeMode themeMode = savedThseme == 'light' ? ThemeMode.light : ThemeMode.dark;
       return themeMode;
     }
   }

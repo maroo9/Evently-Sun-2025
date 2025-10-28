@@ -69,7 +69,7 @@ class Fairebaeservices {
     FirebaseFirestore db=FirebaseFirestore.instance;  /// this mean now we have object of data base
     CollectionReference<EventModel>eventscollection= db.collection("Events").withConverter<EventModel>(
         fromFirestore: (snapshot,_)=>EventModel.fromjson(snapshot.data()!,context),
-        toFirestore: (event, _ )=>event.toJosn()); /// now we json craete  the collection  with   rommse or reservied  places
+        toFirestore: (event, _ )=>event.toJosn()); /// now we json craete  the collection  with   rooms or reserved  places
     return  eventscollection;
   }
 

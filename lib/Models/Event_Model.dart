@@ -13,10 +13,10 @@ class EventModel {
   EventModel({required this.catogryModel, required this.title, required this.description, required this.dataTime, required this.timeOfDay, required this.imagepath, required this.eveintid, required this.userid});
   /// like we did in the Event model  what well retrive or get from firestore
   EventModel.fromjson(Map<String, dynamic> json,BuildContext context):this(
-    eveintid: json["eventId"],
-    userid: json["userId"],
+    eveintid: json["eventid"],
+    userid: json["userid"],
     catogryModel:CatogryModel.getCatogries(context).firstWhere((
-        CatogryModel)=>CatogryModel.id==json["catogryId"]),
+        CatogryModel)=>CatogryModel.id==json["catogryid"]),
     title: json["title"],
     description: json["description"],
     dataTime: json["dataTime"].toDate(),
@@ -26,8 +26,8 @@ class EventModel {
   /// like we did in the user model   // is to decalre whats type well be in the firebase firestore
   Map<String, dynamic> toJosn() {
     return {
-      "eventId" : eveintid,
-      "userId" :userid,
+      "eventid" : eveintid,
+      "userid" :userid,
       "catogry": catogryModel.id,
       "title": title,
       "description": description,

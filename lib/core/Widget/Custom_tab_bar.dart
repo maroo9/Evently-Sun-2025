@@ -8,7 +8,7 @@ class CustomTabBar extends StatefulWidget {
     ,required this.unbgselecteditem
     ,required this.fgselecteditem
     ,required this.catogries
-    , required this.oncatogryTapcliced
+    ,  this.oncatogryTapcliced
 
   });
   final List<CatogryModel> catogries;

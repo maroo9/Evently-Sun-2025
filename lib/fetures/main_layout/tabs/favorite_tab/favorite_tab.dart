@@ -38,7 +38,7 @@ class FavoriteTab extends StatelessWidget {
               itemBuilder: (context,index)=>EventItem(event: EventModel(catogryModel: CatogryModel.Catogries[0], title: "Meeting for Updating The Development Method ", description: "Meeting for Updating The Development Method ", dataTime: DateTime.now(), timeOfDay: TimeOfDay.now(), imagepath: "", eveintid: "", userid: "")),
 
     ),
-            ),
+           ),
           ],
         ),
       ),

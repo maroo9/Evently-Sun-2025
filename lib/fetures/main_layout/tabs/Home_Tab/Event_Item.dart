@@ -36,7 +36,7 @@ List<String>months=["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct",
                             child: Column(
                 children:[
                             Text(
-                              event.dataTime.day.toString(),style: GoogleFonts.inter(fontWeight: FontWeight.w700,fontSize: 24,color:Colorsmanger.Blue),), 
+                              event.dataTime.day.toString(),style: GoogleFonts.inter(fontWeight: FontWeight.w700,fontSize: 24,color:Colorsmanger.Blue),),
                   Text(
                   months[event.dataTime.month-1],style: GoogleFonts.inter(fontWeight: FontWeight.w700,fontSize: 16,color: Colorsmanger.Blue),),
                         ],
