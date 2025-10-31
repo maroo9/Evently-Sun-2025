@@ -95,6 +95,9 @@ class Fairebaeservices {
     QuerySnapshot<EventModel> querySnapshot=await eventcollection.get();
     List<EventModel>events=
     querySnapshot.docs.map((documnetSnapshot) => documnetSnapshot.data()).toList();
+    for (var e in events) {
+      print("➡️ Event: ${e.title}, Category: ${e.catogryModel.id}");
+    }
     return events;
 
   }
